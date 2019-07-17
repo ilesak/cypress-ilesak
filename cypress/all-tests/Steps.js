@@ -1,5 +1,5 @@
 import Chance from 'chance'
-import {isSuperset, union, intersection, difference} from "../../utils/helper"
+import {isSuperset, union, intersection, difference} from "../utils/helper"
 
 it('should ', function () {
     //объявление набора значений при создании
@@ -43,8 +43,9 @@ it('should ', function () {
         setPound = new Set(["GBP", "GGP", "GIP", "FKP", "LBP"]),
         setMixed = new Set(["RUB", "BYN", "EUR", "CNY", "CHF", "CAD", "USD", "GBP", "CUP", "AUD", "SGD"]);
 
-    cy.log("Result of execution isSuperset function: " + isSuperset(setMixed, setDollar));
-    cy.log("Result of execution union function: " + union(setPeso, setFranc));
-    cy.log("Result of execution intersection function: " + intersection(setMixed, setPound));
-    cy.log("Result of execution difference function: " + difference(setMixed, setDollar));
+
+    console.log(isSuperset(setMixed, setDollar));
+    console.log(union(setPeso, setFranc));
+    console.log(intersection(setMixed, setPound));
+    console.log(difference(setMixed, setDollar));
 });
