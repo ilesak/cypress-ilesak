@@ -9,18 +9,24 @@ describe ('UI testes',() =>{
         })
     });
 
+
     it('Convert process ', () => {
         cy.get('@currencyData').then((currencyData) => {
-        cy.log("GIVEN User is at XE Currency Converter Page");
-        currencyConvertPage.open();
 
-        cy.log("WHEN User performs convert");
-        currencyConvertPage.performConvert(currencyData.base, currencyData.shortName);
+            //console.log(currencyParametersArr.length);
+            let randomValue = chance.integer({min: 1, max: currencyData.rates.length});
+            //console.log(currencyData.rates[randomValue].shortName);
 
-        cy.log("THEN User get results");
-        convertResultsPage.rateResult.then(currencyRate => {
-            let convertToNumberRate = parseFloat(currencyData.rate);
-            console.log(convertToNumberRate);
+            cy.log("GIVEN User is at XE Currency Converter Page");
+            currencyConvertPage.open();
+
+            cy.log("WHEN User performs convert");
+            currencyConvertPage.performConvert(currencyData.base, currencyData.rates[randomValue].shortName);
+
+            cy.log("THEN User get results");
+            convertResultsPage.rateResult.then(currencyRate => {
+            let convertToNumberRate = parseFloat(currencyData.rates[randomValue].rate);
+            console.log(currencyRate);
             let convertToNumberCurrency = parseFloat(currencyRate);
            expect(convertToNumberCurrency).to.be.closeTo(convertToNumberRate, 0.1)
         })

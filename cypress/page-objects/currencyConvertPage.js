@@ -54,6 +54,8 @@ import convertResultsPage from './convertResultsPage'
      }
 
      performConvert(fromCurrency,toCurrency){
+
+         this.fromDropdownArrow.should('be.visible');
          this.fromDropdownArrow.click();
          this.scrollableContainer.scrollIntoView({ duration:2000 });
          this.fromValue.type(`${fromCurrency}{enter}`);
