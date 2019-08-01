@@ -3,12 +3,12 @@ import {isSuperset, union, intersection, difference} from "../utils/helper"
 
 it('Execution of Steps 1-5 ', function () {
     //объявление набора значений при создании
-    let currencySet =  new Set(["RUB", "BYN", "EUR", "CNY"]);
+    let currencySet = new Set(["RUB", "BYN", "EUR", "CNY"]);
     let randomValue;
     let randomMaxValue;
 
     //declaration of empty set
-   // let currencySet = new Set();
+    // let currencySet = new Set();
 
     currencySet.forEach((currency) => {
         cy.log(currency);
@@ -24,7 +24,7 @@ it('Execution of Steps 1-5 ', function () {
         cy.log(currency);
     });
 
-    cy.log ("Set has USD value: " + currencySet.has("USD"));
+    cy.log("Set has USD value: " + currencySet.has("USD"));
 
     let currencyArr = Array.from(currencySet);//converting Set to Array
 
