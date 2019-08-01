@@ -1,5 +1,5 @@
-class convertResultsPage{
-    get rateResult(){
+class convertResultsPage {
+    get rateResult() {
         return cy.get(".converterresult-toAmount")
             .invoke('text')
             .then(currencyRate => {

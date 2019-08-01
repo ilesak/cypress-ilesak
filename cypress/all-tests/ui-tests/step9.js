@@ -1,10 +1,10 @@
-import  Chance from 'chance'
+import Chance from 'chance'
 import convertResultsPage from "../../page-objects/convertResultsPage"
 import currencyConvertPage from "../../page-objects/currencyConvertPage"
 
-describe ('UI testes',() =>{
+describe('UI testes', () => {
     before(() => {
-        cy.fixture('currency').then(data =>{
+        cy.fixture('currency').then(data => {
             cy.wrap(data).as('currencyData')
         })
     });
@@ -25,11 +25,11 @@ describe ('UI testes',() =>{
 
             cy.log("THEN User get results");
             convertResultsPage.rateResult.then(currencyRate => {
-            let convertToNumberRate = parseFloat(currencyData.rates[randomValue].rate);
-            console.log(currencyRate);
-            let convertToNumberCurrency = parseFloat(currencyRate);
-           expect(convertToNumberCurrency).to.be.closeTo(convertToNumberRate, 0.1)
-        })
+                let convertToNumberRate = parseFloat(currencyData.rates[randomValue].rate);
+                console.log(currencyRate);
+                let convertToNumberCurrency = parseFloat(currencyRate);
+                expect(convertToNumberCurrency).to.be.closeTo(convertToNumberRate, 0.1)
+            })
         });
     });
 });
