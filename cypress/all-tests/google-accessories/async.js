@@ -15,13 +15,13 @@ describe('Second approach', () => {
             method: 'get',
             url: 'https://storage.googleapis.com/mannequin/2018/data/productwall/accessories/en_us.json?c=1566902029',
         }).then(response => {
-            cy.writeFile('cypress/fixtures/products.json', response.body)
+            cy.wrap(response.body).as("productList")
         });
     });
     it('should ', function () {
-        cy.fixture('products').then((products) => {
-            cy.log("Quantity of products: " + (products.products.length));
-            console.log(products.products[0]);
+        cy.get('@productList').then((productList) => {
+            cy.log("Quantity of products: " + (productList.products.length));
+            console.log(productList.products[0]);
         });
     });
 });
