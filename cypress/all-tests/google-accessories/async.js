@@ -12,11 +12,10 @@ it('First approach', function () {
 });
 
 
-
 describe('Second approach', () => {
     before(() => {
         getProductDataFromAPI().as("productList")
-        });
+    });
 
     it('should ', function () {
         cy.get('@productList').then((productList) => {
