@@ -1,14 +1,11 @@
 import {getProductDataFromAPI} from "../../support/getDataFromAPI"
 
 it('First approach', function () {
-    cy.request({
-        method: 'get',
-        url: 'https://storage.googleapis.com/mannequin/2018/data/productwall/accessories/en_us.json?c=1566902029',
-
-    }).then((response => {
-        cy.log("Quantity of products: " + (response.body.products.length));
-        console.log(response.body.products[0])
-    }));
+    getProductDataFromAPI().as("productList")
+        .then((response => {
+            cy.log("Quantity of products: " + (response.products.length));
+            console.log(response.products[0])
+        }));
 });
 
 
