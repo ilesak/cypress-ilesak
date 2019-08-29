@@ -1,3 +1,5 @@
+import {getProductDataFromAPI} from "../../support/getDataFromAPI"
+
 it('First approach', function () {
     cy.request({
         method: 'get',
@@ -9,15 +11,13 @@ it('First approach', function () {
     }));
 });
 
+
+
 describe('Second approach', () => {
     before(() => {
-        cy.request({
-            method: 'get',
-            url: 'https://storage.googleapis.com/mannequin/2018/data/productwall/accessories/en_us.json?c=1566902029',
-        }).then(response => {
-            cy.wrap(response.body).as("productList")
+        getProductDataFromAPI().as("productList")
         });
-    });
+
     it('should ', function () {
         cy.get('@productList').then((productList) => {
             cy.log("Quantity of products: " + (productList.products.length));
